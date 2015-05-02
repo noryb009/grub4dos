@@ -27,7 +27,7 @@
  *
  * Use the following shell command to generate the grub.exe file:
  *
- * 	cat dosstart pre_stage2 > grub.exe
+ * 	cat dosstart pre_stage2 > pupl.exe
  *
  */
 
@@ -3705,7 +3705,7 @@ msg_No_grldr_ext2:
 	.ascii	"No "
 
 filename_ext2:
-	.ascii	"grub.exe\0"
+	.ascii	"pupl.exe\0"
 
 	. = Entry_ext2 + 0x1ee
 
@@ -4286,7 +4286,7 @@ msg_NTFS_Not_Found_Error:
 	.ascii "No "
 
 nt_boot_image:
-	.ascii "grub.exe\0"
+	.ascii "pupl.exe\0"
 
 // Kernel load address, located at 0x1E8
 	. = Entry_nt + 0x1e8

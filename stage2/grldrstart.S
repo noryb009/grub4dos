@@ -23,7 +23,7 @@
  *
  * Use the following shell command to generate the GRLDR file:
  *
- * 	cat grldrstart pre_stage2 > grldr
+ * 	cat grldrstart pre_stage2 > pupldr
  *
  */
 
@@ -1419,7 +1419,7 @@ Entry_32:
 	. = Entry_32 + 0x03
 
 #ifdef	BOOTGRUB
-	.ascii	"GRLDR   "	/* OEM name string (of OS which formatted the disk). */
+	.ascii	"PUPLDR  "	/* OEM name string (of OS which formatted the disk). */
 #endif
 
 	. = Entry_32 + 0x0b
@@ -1949,7 +1949,7 @@ msg_BootError_32:
 filename_32:
 
 #ifdef	BOOTGRUB
-	.ascii	"GRLDR      \0"
+	.ascii	"PUPLDR     \0"
 #else
 	.ascii	"KERNEL  SYS\0"
 #endif
@@ -2121,7 +2121,7 @@ Entry_12_16:
 	. = Entry_12_16 + 0x03
 
 #ifdef	BOOTGRUB
-	.ascii	"GRLDR   "
+	.ascii	"PUPLDR  "
 #endif
 
 	. = Entry_12_16 + 0x0b
@@ -2799,7 +2799,7 @@ msg_BootError_12_16:
 filename_12_16:
 
 #ifdef	BOOTGRUB
-	.ascii	"GRLDR      \0"
+	.ascii	"PUPLDR     \0"
 #else
 	.ascii	"KERNEL  SYS\0"
 #endif
@@ -3619,7 +3619,7 @@ msg_No_grldr_ext2:
 	.ascii	"No "
 
 filename_ext2:
-	.ascii	"grldr\0"
+	.ascii	"pupldr\0"
 
 	. = Entry_ext2 + 0x1ee
 
@@ -4119,7 +4119,7 @@ msg_NTFS_Not_Found_Error:
 	.ascii "No "
 
 nt_boot_image:
-	.ascii "grldr\0"
+	.ascii "pupldr\0"
 
 // Kernel load address, located at 0x1E8
 	. = Entry_nt + 0x1e8

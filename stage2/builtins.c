@@ -4703,7 +4703,7 @@ static struct builtin builtin_fallback =
 };
 
 /* command */
-static char command_path[128]="(bd)/BOOT/GRUB/";
+static char command_path[128]="(bd)/LICK/MENU/";
 static int command_path_len = 15;
 #define GRUB_MOD_ADDR (SYSTEM_RESERVED_MEMORY - 0x100000)
 #define UTF8_BAT_SIGN 0x54414221BFBBEFULL
@@ -4977,7 +4977,7 @@ command_func (char *arg, int flags)
 	    if (! *arg)
 	    {
 		command_path_len = 15;
-		return grub_sprintf(command_path,"(bd)/BOOT/GRUB/");
+		return grub_sprintf(command_path,"(bd)/LICK/MENU/");
 	    }
 
 	    int j = grub_strlen(arg);
@@ -5265,7 +5265,7 @@ static struct builtin builtin_command =
   BUILTIN_MENU | BUILTIN_CMDLINE | BUILTIN_SCRIPT | BUILTIN_HELP_LIST | BUILTIN_BOOTING | BUILTIN_IFTITLE,
   "command [--set-path=PATH|--set-ext=EXTENSIONS] FILE [ARGS]",
   "Run executable file FILE with arguments ARGS."
-  "--set-path sets a search PATH for executable files,default is (bd)/boot/grub."
+  "--set-path sets a search PATH for executable files,default is (bd)/LICK/MENU."
   "--set-ext sets default extensions for executable files."
 };
 

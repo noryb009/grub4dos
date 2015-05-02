@@ -21,9 +21,9 @@ datalibdir = $(libdir)/$(PACKAGE)/$(host_cpu)-$(host_vendor)
 
 EXTRA_PROGRAMS = nbloader.exec pxeloader.exec diskless.exec
 
-datalib_DATA = grub.exe badgrub.exe grldr grldr.mbr bootlace.com hmload.com eltorito.sys
-noinst_DATA = pre_stage2 dosstart badgrubstart grldrstart mbrstart bootlacestart hmloadstart pre_stage2_fullsize pre_stage2_head pre_stage2_tail
-noinst_PROGRAMS = pre_stage2.exec dosstart.exec badgrubstart.exec grldrstart.exec mbrstart.exec bootlacestart.exec hmloadstart.exec
+datalib_DATA = pupl.exe badpupl.exe pupldr pupldr.mbr bootlace.com hmload.com eltorito.sys
+noinst_DATA = pre_stage2 dosstart badpuplstart pupldrstart mbrstart bootlacestart hmloadstart pre_stage2_fullsize pre_stage2_head pre_stage2_tail
+noinst_PROGRAMS = pre_stage2.exec dosstart.exec badpuplstart.exec pupldrstart.exec mbrstart.exec bootlacestart.exec hmloadstart.exec
 
 MOSTLYCLEANFILES = $(noinst_PROGRAMS)
 
@@ -81,37 +81,37 @@ dosstart_exec_LDFLAGS = $(START_LINK)
 
 dosstart_exec-dosstart.$(OBJEXT): stage2_size.h
 
-grub.exe: pre_stage2 dosstart
+pupl.exe: pre_stage2 dosstart
 	$(AM_V_GEN)
-	$(AM_V_at)-rm -f grub.exe
-	$(AM_V_at)echo -n -e "\000\000\000\000\000\000\000\000\000\000\000\000" | cat dosstart pre_stage2 - > grub.exe
-	$(AM_V_at)if [ -f ../preset_menu_used ]; then cat ../preset_menu_used >> grub.exe ;fi
-	$(AM_V_at)dd if=/dev/zero bs=4128 count=1 >> grub.exe 2>/dev/null || echo "DD failed!"
+	$(AM_V_at)-rm -f pupl.exe
+	$(AM_V_at)echo -n -e "\000\000\000\000\000\000\000\000\000\000\000\000" | cat dosstart pre_stage2 - > pupl.exe
+	$(AM_V_at)if [ -f ../preset_menu_used ]; then cat ../preset_menu_used >> pupl.exe ;fi
+	$(AM_V_at)dd if=/dev/zero bs=4128 count=1 >> pupl.exe 2>/dev/null || echo "DD failed!"
 
-badgrubstart_exec_SOURCES = badgrubstart.S
-badgrubstart_exec_CCASFLAGS = $(STAGE2_COMPILE)
-badgrubstart_exec_LDFLAGS = $(START_LINK)
+badpuplstart_exec_SOURCES = badgrubstart.S
+badpuplstart_exec_CCASFLAGS = $(STAGE2_COMPILE)
+badpuplstart_exec_LDFLAGS = $(START_LINK)
 
-badgrubstart_exec-badgrubstart.$(OBJEXT): stage2_size.h dosstart.S
+badpuplstart_exec-badpuplstart.$(OBJEXT): stage2_size.h dosstart.S
 
-badgrub.exe: pre_stage2 badgrubstart
+badpupl.exe: pre_stage2 badpuplstart
 	$(AM_V_GEN)
-	$(AM_V_at)-rm -f badgrub.exe
-	$(AM_V_at)echo -n -e "\000\000\000\000\000\000\000\000\000\000\000\000" | cat badgrubstart pre_stage2 - > badgrub.exe
-	$(AM_V_at)if [ -f ../preset_menu_used ]; then cat ../preset_menu_used >> badgrub.exe ;fi
-	$(AM_V_at)dd if=/dev/zero bs=4128 count=1 >> badgrub.exe 2>/dev/null || echo "DD failed!"
+	$(AM_V_at)-rm -f badpupl.exe
+	$(AM_V_at)echo -n -e "\000\000\000\000\000\000\000\000\000\000\000\000" | cat badpuplstart pre_stage2 - > badpupl.exe
+	$(AM_V_at)if [ -f ../preset_menu_used ]; then cat ../preset_menu_used >> badpupl.exe ;fi
+	$(AM_V_at)dd if=/dev/zero bs=4128 count=1 >> badpupl.exe 2>/dev/null || echo "DD failed!"
 
-grldrstart_exec_SOURCES = grldrstart.S
-grldrstart_exec_CCASFLAGS = $(STAGE2_COMPILE)
-grldrstart_exec_LDFLAGS = $(START_LINK)
+pupldrstart_exec_SOURCES = grldrstart.S
+pupldrstart_exec_CCASFLAGS = $(STAGE2_COMPILE)
+pupldrstart_exec_LDFLAGS = $(START_LINK)
 
-grldrstart_exec-grldrstart.$(OBJEXT): stage2_size.h
+pupldrstart_exec-grldrstart.$(OBJEXT): stage2_size.h
 
-grldr: pre_stage2 grldrstart
+pupldr: pre_stage2 pupldrstart
 	$(AM_V_GEN)
-	$(AM_V_at)-rm -f grldr
-	$(AM_V_at)echo -n -e "\000\000\000\000\000\000\000\000\000\000\000\000" | cat grldrstart pre_stage2 - > grldr
-	$(AM_V_at)if [ -f ../preset_menu_used ]; then cat ../preset_menu_used >> grldr ;fi
+	$(AM_V_at)-rm -f pupldr
+	$(AM_V_at)echo -n -e "\000\000\000\000\000\000\000\000\000\000\000\000" | cat pupldrstart pre_stage2 - > pupldr
+	$(AM_V_at)if [ -f ../preset_menu_used ]; then cat ../preset_menu_used >> pupldr ;fi
 
 mbrstart_exec_SOURCES = mbrstart.S
 mbrstart_exec_CCASFLAGS = $(STAGE2_COMPILE)
@@ -119,10 +119,10 @@ mbrstart_exec_LDFLAGS = $(START_LINK)
 
 mbrstart_exec-mbrstart.$(OBJEXT): stage2_size.h grldrstart.S
 
-grldr.mbr: mbrstart
+pupldr.mbr: mbrstart
 	$(AM_V_GEN)
-	$(AM_V_at)-rm -f grldr.mbr
-	$(AM_V_at)cat mbrstart > grldr.mbr
+	$(AM_V_at)-rm -f pupldr.mbr
+	$(AM_V_at)cat mbrstart > pupldr.mbr
 
 bootlacestart_exec_SOURCES = bootlacestart.S
 bootlacestart_exec_CCASFLAGS = $(STAGE2_COMPILE)

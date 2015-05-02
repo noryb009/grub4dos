@@ -27,7 +27,7 @@
  *
  * Use the following shell command to generate the badgrub.exe file:
  *
- * 	cat badgrubstart pre_stage2 > badgrub.exe
+ * 	cat badgrubstart pre_stage2 > badpupl.exe
  *
  */
 
