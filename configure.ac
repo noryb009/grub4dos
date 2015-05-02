@@ -211,9 +211,6 @@ AC_SUBST(BUILD_DIRS)
 # Defined in acinclude.m4.
 grub_ASM_USCORE
 grub_PROG_OBJCOPY_ABSOLUTE
-if test "x$grub_cv_prog_objcopy_absolute" != xyes; then
-  AC_MSG_ERROR([GRUB requires a working absolute objcopy; upgrade your binutils])
-fi
 
 grub_ASM_PREFIX_REQUIREMENT
 

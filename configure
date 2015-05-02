@@ -5543,9 +5543,6 @@ fi
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $grub_cv_prog_objcopy_absolute" >&5
 $as_echo "$grub_cv_prog_objcopy_absolute" >&6; }
-if test "x$grub_cv_prog_objcopy_absolute" != xyes; then
-  as_fn_error $? "GRUB requires a working absolute objcopy; upgrade your binutils" "$LINENO" 5
-fi
 
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether addr32 must be in the same line as the instruction" >&5
