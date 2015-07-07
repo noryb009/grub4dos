@@ -121,7 +121,7 @@ VARIABLE(version_string)
 	.string VERSION
 
 VARIABLE(config_file)
-	.string "/menu.lst"
+	.string "/lickmenu.lst"
 
 	. = EXT_C(main) + 0x34
 

@@ -1270,7 +1270,7 @@ grldr_real_start:
 //	.byte	0		/* mark the end of ascii zero string */
 
 default_config_file:
-	.ascii	"/menu.lst"
+	.ascii	"/lickmenu.lst"
 
 	.byte	0		/* mark the end of ascii zero string */
 #else

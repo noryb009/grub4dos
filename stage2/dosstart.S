@@ -1349,7 +1349,7 @@ grldr_real_start:
 	ljmp	$0, $0x8200
 
 default_config_file_grldr:
-	.ascii	"/menu.lst"
+	.ascii	"/lickmenu.lst"
 
 	.byte	0		/* mark the end of ascii zero string */
 #else
@@ -8600,7 +8600,7 @@ iodelay:
 //	.byte	0		/* mark the end of ascii zero string */
 
 default_config_file:
-	.ascii	"/menu.lst"
+	.ascii	"/lickmenu.lst"
 default_config_file_end:
 
 	.byte	0		/* mark the end of ascii zero string */
@@ -12256,7 +12256,7 @@ option_config_file_dos:
 	.ascii	"--config-file="
 option_config_file_dos_end:
 default_config_file_dos:
-	.ascii	"/menu.lst"
+	.ascii	"/lickmenu.lst"
 default_config_file_dos_end:
 
 	.byte	0		/* mark the end of ascii zero string */
@@ -12264,10 +12264,10 @@ default_config_file_dos_end:
 	/* bad DOS pathname delimiter! Don't use single back slash by mistake! */
 
 default_config_file_dos2:
-	.ascii	"\\menu.lst\0"		/* use double back slashes */
+	.ascii	"\\lickmenu.lst\0"		/* use double back slashes */
 
 default_config_file_dos1:
-	.ascii	".\\menu.lst\0"		/* use double back slashes */
+	.ascii	".\\lickmenu.lst\0"		/* use double back slashes */
 
 usage_string: /* DOS string terminator is dollar($), not the null char */
 	.ascii	"\r\nGRUB: Unrecognized or failed command line parameters. Usage:\r\n"
