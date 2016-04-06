@@ -1,14 +1,14 @@
 pxe detect
 configfile
 default 0
-timeout 1
+timeout 0
 
 title find /lickmenu.lst
 	errorcheck off
 	configfile /lickmenu.lst
 	if "%@root%"=="(ud)" && calc *0x82A0=*0x82b9&0xff
 	if "%@root:~1,1%"=="f" && find --set-root --devices=f /lickmenu.lst && configfile /lickmenu.lst
-	find --set-root --ignore-floppies --ignore-cd /mlickmenu.lst && configfile /lickmenu.lst
+	find --set-root --ignore-floppies --ignore-cd /lickmenu.lst && configfile /lickmenu.lst
 	errorcheck on
 	commandline
 
